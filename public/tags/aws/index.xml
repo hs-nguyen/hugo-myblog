@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AWS on Learning Cloud</title>
+    <link>//localhost:52610/tags/aws/</link>
+    <description>Recent content in AWS on Learning Cloud</description>
+    <image>
+      <title>Learning Cloud</title>
+      <url>//localhost:52610/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>//localhost:52610/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.135.0</generator>
+    <language>en-us</language>
+    <atom:link href="//localhost:52610/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Build &amp; deploy a high-availability web application using CloudFormation AWS.</title>
+      <link>//localhost:52610/project/cloudformation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:52610/project/cloudformation/</guid>
+      <description>Build &amp;amp; deploy a high-availability web application using CloudFormation AWS.</description>
+    </item>
+    <item>
+      <title>Build &amp; deploy a web application using ECS with Fargate on AWS.</title>
+      <link>//localhost:52610/project/ecs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:52610/project/ecs/</guid>
+      <description>Build &amp;amp; deploy a web application using ECS with EC2 on AWS.</description>
+    </item>
+    <item>
+      <title>SAA-Certification</title>
+      <link>//localhost:52610/blog/aws-saa-certification/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:52610/blog/aws-saa-certification/</guid>
+      <description>How I passed the AWS Certification</description>
+    </item>
+    <item>
+      <title>100 ngày học Cloud</title>
+      <link>//localhost:52610/blog/h%E1%BB%8Dc-100-ng%C3%A0y-v%E1%BB%9Bi-aws/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:52610/blog/h%E1%BB%8Dc-100-ng%C3%A0y-v%E1%BB%9Bi-aws/</guid>
+      <description>Làm thế nào học Cloud</description>
+    </item>
+  </channel>
+</rss>

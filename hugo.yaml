@@ -1,0 +1,142 @@
+baseURL: ""
+languageCode: en-us
+title: Learning Cloud
+
+theme: PaperMod
+
+
+menu:
+  main:
+    - identifier: Home
+      name: Home
+      url: /
+      weight: 10
+    - identifier: Blog
+      name: Blogs
+      url: /blog
+      weight: 20
+    - identifier: Project
+      name: Projects
+      url: /project
+      weight: 30
+    - identifier: Search
+      name: Search
+      url: /search
+      weight: 40
+    - identifier: Tags
+      name: Tags
+      url: /tags
+      weight: 50
+
+
+      
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  title: ExampleSite
+  description: "ExampleSite description"
+  keywords: [Blog, Portfolio, PaperMod]
+  author: Me
+  # author: ["Me", "You"] # multiple authors
+  images: ["<link or path of image for opengraph, twitter-cards>"]
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto # dark, light
+  disableThemeToggle: false
+
+  ShowReadingTime: true
+  #ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: false
+  #ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: false
+  tocopen: false
+
+  assets:
+    # disableHLJS: true # to disable highlight.js
+    # disableFingerprinting: true
+    favicon: "<link / abs url>"
+    favicon16x16: "<link / abs url>"
+    favicon32x32: "<link / abs url>"
+    apple_touch_icon: "<link / abs url>"
+    safari_pinned_tab: "<link / abs url>"
+
+  label:
+    text: "Home"
+    icon: /apple-touch-icon.png
+    iconHeight: 35
+
+  # profile-mode
+  profileMode:
+    enabled: true # needs to be explicitly set
+    title: Nguyen Sang
+    subtitle: "Learning Cloud"
+    imageUrl: "/picture/me.png"
+    imageWidth: 130
+    imageHeight: 130
+    imageTitle: my images
+  # home-info mode
+  homeInfoParams:
+    Title: "Hi there \U0001F44B"
+    Content: Welcome to my blog
+
+  SocialIcons:
+  - name: Facebook
+    url: "https://www.facebook.com/huusangnguyen2001/"
+  - name: Linkedin
+    url: "https://www.linkedin.com/in/nguyen-huu-sang/"
+  - name: Github
+    url: "https://hs-nguyen.github.io/"
+
+
+
+    
+  
+ShowShareButtons: true
+  
+ShareButtons: ["linkedin", "facebook"]
+
+
+features : [
+  "responsive",
+  "single-column",
+  "blog",
+  "cover-image",
+  "table-of-contents",
+  "opengraph",
+  "highlight.js",
+  "favicon",
+  "archive",
+  "share-icons",
+  "cover",
+  "multilingual",
+  "social-icons",
+  "minified-assets",
+  "theme-toggle",
+  "menu-location-indicator",
+  "scroll-to-top",
+  "search"
+]
+
+tags : [
+  "responsive",
+  "simple",
+  "clean",
+  "light",
+  "dark",
+  "blog",
+  "minimalist",
+  "highlight.js",
+  "search"
+]
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
