@@ -76,7 +76,7 @@ params:
   profileMode:
     enabled: true # needs to be explicitly set
     title: Nguyen Sang
-    subtitle: "Learning Cloud"
+    subtitle: ""
     imageUrl: "/picture/me.png"
     imageWidth: 130
     imageHeight: 130
