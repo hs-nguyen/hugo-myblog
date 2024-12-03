@@ -20,11 +20,11 @@
       <description>Build &amp;amp; deploy a high-availability web application using CloudFormation AWS.</description>
     </item>
     <item>
-      <title>Build &amp; deploy a web application using ECS with Fargate on AWS.</title>
+      <title>How to build &amp; deploy a high-availability web application using docker ECS with EC2 on AWS.</title>
       <link>http://localhost:1313/project/ecs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/project/ecs/</guid>
-      <description>Build &amp;amp; deploy a web application using ECS with EC2 on AWS.</description>
+      <description>How to build &amp;amp; deploy a high-availability web application using docker ECS with EC2 on AWS.</description>
     </item>
     <item>
       <title>SAA-Certification</title>

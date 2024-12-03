@@ -1,0 +1,23 @@
+﻿.notice {
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.notice.note {
+    background-color: #e7f3fe;
+    border: 1px solid #b3d4fc;
+    color: #31708f;
+}
+
+.notice.warning {
+    background-color: #fcf8e3;
+    border: 1px solid #faebcc;
+    color: #080808;
+}
+
+.notice.error {
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+    color: #a94442;
+}

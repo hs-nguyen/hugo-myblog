@@ -5,12 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Build &amp; deploy a web application using ECS with Fargate on AWS. | Learning Cloud</title>
+<title>How to build &amp; deploy a high-availability web application using docker ECS with EC2 on AWS. | Learning Cloud</title>
 <meta name="keywords" content="AWS, ECS">
-<meta name="description" content="Build &amp; deploy a web application using ECS with EC2 on AWS.">
+<meta name="description" content="How to build &amp; deploy a high-availability web application using docker ECS with EC2 on AWS.">
 <meta name="author" content="Me">
 <link rel="canonical" href="http://localhost:1313/project/ecs/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.54405a410796490bc874ab6181fac9b675753cc2b91375d8f882566459eca428.css" integrity="sha256-VEBaQQeWSQvIdKthgfrJtnV1PMK5E3XY&#43;IJWZFnspCg=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.0d898f4f70604ecf22b8be6a58e3513b4c07abbf356afe4ad3187ecc392fde6b.css" integrity="sha256-DYmPT3BgTs8iuL5qWONRO0wHq781av5K0xh&#43;zDkv3ms=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/%3Clink%20/%20abs%20url%3E">
@@ -55,8 +55,8 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="Build &amp; deploy a web application using ECS with Fargate on AWS." />
-<meta property="og:description" content="Build &amp; deploy a web application using ECS with EC2 on AWS." />
+</noscript><meta property="og:title" content="How to build &amp; deploy a high-availability web application using docker ECS with EC2 on AWS." />
+<meta property="og:description" content="How to build &amp; deploy a high-availability web application using docker ECS with EC2 on AWS." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/project/ecs/" />
 <meta property="og:image" content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
@@ -66,8 +66,8 @@
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E" />
-<meta name="twitter:title" content="Build &amp; deploy a web application using ECS with Fargate on AWS."/>
-<meta name="twitter:description" content="Build &amp; deploy a web application using ECS with EC2 on AWS."/>
+<meta name="twitter:title" content="How to build &amp; deploy a high-availability web application using docker ECS with EC2 on AWS."/>
+<meta name="twitter:description" content="How to build &amp; deploy a high-availability web application using docker ECS with EC2 on AWS."/>
 
 
 <script type="application/ld+json">
@@ -84,7 +84,7 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Build \u0026 deploy a web application using ECS with Fargate on AWS.",
+      "name": "How to build \u0026 deploy a high-availability web application using docker ECS with EC2 on AWS.",
       "item": "http://localhost:1313/project/ecs/"
     }
   ]
@@ -94,14 +94,14 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Build \u0026 deploy a web application using ECS with Fargate on AWS.",
-  "name": "Build \u0026 deploy a web application using ECS with Fargate on AWS.",
-  "description": "Build \u0026 deploy a web application using ECS with EC2 on AWS.",
+  "headline": "How to build \u0026 deploy a high-availability web application using docker ECS with EC2 on AWS.",
+  "name": "How to build \u0026 deploy a high-availability web application using docker ECS with EC2 on AWS.",
+  "description": "How to build \u0026 deploy a high-availability web application using docker ECS with EC2 on AWS.",
   "keywords": [
     "AWS", "ECS"
   ],
-  "articleBody": "",
-  "wordCount" : "0",
+  "articleBody": "Kiến trúc dự án Lâu lâu hands-on vài projects để nâng cao chuyên môn \u0026 kỹ năng trong việc sử dụng AWS. Và đây là project mà mình đã làm. Topic: How to build \u0026 deploy a high-availability web application using docker ECS with EC2 on AWS. Time to completed: 45 minutes Region: Singapore Cost: 1$ Các bước chuẩn bị: 1 chiếc Laptop or PC (không cần mạnh) có thể truy cập vào AWS console. IAM user full permission Administrator (không sử dụng User root khi làm lab). Registry domain tại Route 53 khoảng 3$ ( mục đích sử dụng để access dns route 53 thay vì sử dụng dns alb) (optional). Tại đây mình đã registry domain: https://cloud-sangnguyen.click Các bước thực hiện: 1. VPC Setting (VPC, Route table, Public \u0026 Private Subnet, IGW, NGW)\nClick “Create VPC” Resources to create: VPC and more Name: d-vpc-01 IPv4 CIDR block: 10.0.0.0/16 Number of Public subnets: 2 Number of Private subnets: 2 Public subnet CIDR block in ap-southeast-1a: 10.0.0.0/20 Public subnet CIDR block in ap-southeast-1b: 10.0.32.0/20 Private subnet CIDR block in ap-southeast-1a: 10.0.16.0/20 Private subnet CIDR block in ap-southeast-1b: 10.0.48.0/20 Nat gateways: 1 per AZ VPC endpoints: None Preview lại một lần nuk =\u003e Click “Create VPC” (để hoàn tất việc triển khai) Quá trình tạo VPC mất tầm 2 - 3 phút Confirm VPC Lưu ý: Việc triển khai 2 Nat gateways trên 2 AZ sẽ phát sinh thêm chi phí, cần cân nhắc khi làm việc này, hiện tại mình sử dụng credits trong qá trình làm lab.\nLaunch EC2 instance (vai trò Bastion-host) Click “Launch instances” Name: d-ec2-bastion-host AMI: Amazon Linux 2023 Instance type: t3.medium (mình sử dụng t3.medium để xào nấu docker cho nó mượt) (sẽ phát sinh thêm chi phí) Keypair: keypair.singapore.pem Network setting: VPC - required: d-vpc-01 (đã khởi tạo từ đầu) Subnet: Public Subnet Auto-assign public IP: Enable Security groups: click create security group Security group name: d-sg-bastion-host Description: No open port 22 (Vì mình sẽ connect thông qua Session manager) Inbound rule: none Preview =\u003e click “Launch instance” Create Repository ECR Click “Create a repository” Repository name: d-ecr-web-application Image tag mutability: Mutable Encryption settings: AES-256 Confirm repository Tiếp đến quay lại Bastion-host (để xào nấu docker) Connect Bastion-host thông qua Session manager Command line: Yum update -y Yum install git -y Yum install docker -y systemctl start docker git --version docker --version Check Git clone sources html từ github (vì mình không chuyên sâu về dev nên mình download sources free ở trên web) ls -la (list danh mục hiện tại) cd Host-a-Static-Web-App-on-AWS-with-Docker-and-AWS-ECS ls -lart vi Dockerfile - FROM nginx:1.25.3 - COPY ./ /usr/share/nginx/html - EXPOSE 80 - CMD [\"nginx\", \"-g\", \"daemon off;\"] docker build -t web-application . docker images (check images) docker run -d –name web-application -p 8080:80 web-application docker ps -a (check status container) Edit security group for Bastion-host Inbound rules: Type: custom TCP Port range: 8080 Source: Anywhere IPv4 Copy IP Public:8080 (truy cập vào trình duyệt) Modify Iam Role for EC2 (permission allows EC2 access to ECR) Quay lại EC2 Bastion-host (để push image lên ECR) View push command trong ECR thực hiện thứ tự dòng lệnh Check image bên trong ECR Create cluster in ECS Click create cluster Cluster name: d-ecs-cluster-web-application Infrastructure: Amazon EC2 instances Auto Scaling group (ASG): Create new ASG Provisioning model: On-demand Container instance Amazon Machine Image (AMI): Amazon Linux 2023 EC2 instance type: t3.medium EC2 instance role: ecsInstanceRole Desired capacity: Minimum: 4 (scale out theo kiến trúc) Maximum: 4 SSH Key pair: Keypair-singapore Root EBS volume size: 30 Network settings for Amazon EC2 instances VPC: d-vpc-01 Subnets: Specify 2 private subnets Security group: Create a new security group Security group name: d-sg-ecs-web-application Security group description: Allows traffic from ALB \u0026 Bastion-host Inbound rules for security groups: Type: SSH Protocol: TCP Port range: 22 Source: Choose “d-sg-bastion-host” Create Lúc này nó sẽ tự động scale out 4 instances Create Task definition Click “Create task definition” Task definition configuration Task definition family: d-task-definition-web-application Infrastructure requirements Launch type: Amazon EC2 instances Operating system/Architecture: Linux/X86_64 Network mode: bridge Task size CPU: 1vCPU Memory: 3GB Task role: none (tùy bạn có muốn task bên trong container call API AWS services khác không, nếu không thì để trống) Container - 1 Name: Container-web-application Image URI: copy Image URI tại ECR Essential container: Yes Create Create Load Balancers Create target group Create target group Choose a target type: Instances Target group name: d-tg-web-application Protocol: HTTP Port: 80 IP address type: IPv4 VPC: d-vpc-01 Protocol version: HTTP1 Next Register targets (tại đây bạn không cần đăng ký EC2 instance vào trong target group, khi kết nối ALB nó sẽ tự động đăng ký vào target) Create Security group ALB Security group name: d-sg-alb-web-application Description: Allows traffic from Internet VPC: d-vpc-01 Inbound rules: Type: HTTP Protocol: TCP Port range: 80 Sources: Anywhere IPv4 Create security group (hoàn tất việc tạo) Create Load balancer Load balancer types: Application Load Balancer =\u003e Create Load balancer name: d-alb-web-application Scheme: Internet-facing Load balancer IP address type: IPv4 Network mapping VPC: d-vpc-01 Availability Zones: Specify 2 AZ có 2 Public Subnets Security groups: d-sg-alb-web-application Listeners and routing Protocol: HTTP Port: 80 Forward to: d-tg-web-application Create load balancer (hoàn tất việc tạo) Edit security group của d-sg-ecs-web-application Inbound rules =\u003e Add rule Type: All TCP Protocol: TCP Port range: 0 - 65535 Sources: d-sg-alb-web-application (chọn security của ALB) Create services in cluster Create services Environment Compute configuration (advanced) Compute options: Launch type Launch type: EC2 Deployment configuration Application type: Click Service Family: d-task-definition-web-application Revision: 1 (LATEST) Service name: d-ecs-service-web-application Service type: Replica Desired tasks: 4 Load balancing (optional) Load balancer type: Application Load Balancer Load balancer: d-alb-web-application Listener: Use an existing listener Listener: 80:HTTP Target group: Use an existing target group Target group name: d-tg-web-application Create (hoàn tất việc tạo service) Quá trình task running mất tầm 1 - 2 phút Truy cập dns alb để kiểm tra Cấu hình SSL/TLS mã hóa đường truyền truy cập thông qua giao thức HTTPS Tại giao diện ALB Add Listener Listener configuration Protocol: HTTPS Port: 443 Forward to target group: d-tg-web-application Secure listener settings: Default SSL/TLS server certificate Certificate source: From ACM Certificate (from ACM): cloud-sangnguyen.click Edit inbound rules: d-sg-alb-web-application (open port 443) Add inbound rule: Type: HTTPS Protocol: TCP Port range: 443 Source: Anywhere IPv4 Save rules Sử dụng DNS đã đăng ký tại route 53 thay thế cho DNS ALB (optional) Route 53 trên console Create record Routing policy: Simple routing Configure records: define simple record Value/Route traffic to Alias to Application and Classic Load Balancer Asia Pacific (Singapore) Click “Define simple record” Create records (để hoàn tất việc tạo) Confirm record Truy cập https://cloud-sangnguyen.click (test hoạt động) Clean up resources Delete Services in cluster Delete Cluster in ECS Delete Task-definition Delete Application Load Balancer Delete Target group Terminate EC2-Bastion-host Delete Nat gateways Release elastic IP address Delete VPC Kiểm tra kỹ lại all resources một lần nuk, để tránh mất tiền :)\nOk, vừa rồi là một project khá dài cũng khá nhiều công đoạn trong việc triển khai một ứng dụng high-availability sử dụng docker ECS with EC2. Chúc các bạn thành công. ",
+  "wordCount" : "1195",
   "inLanguage": "en",
   "image": "http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E","datePublished": "0001-01-01T00:00:00Z",
   "dateModified": "0001-01-01T00:00:00Z",
@@ -142,7 +142,7 @@
         <div class="logo">
             <a href="http://localhost:1313/" accesskey="h" title="Home (Alt + H)">
                 <img src="http://localhost:1313/apple-touch-icon.png" alt="" aria-label="logo"
-                    height="35">Home</a>
+                    height="50">Home</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -201,15 +201,556 @@
   <header class="post-header">
     <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/project/">Projects</a></div>
     <h1 class="post-title entry-hint-parent">
-      Build &amp; deploy a web application using ECS with Fargate on AWS.
+      How to build &amp; deploy a high-availability web application using docker ECS with EC2 on AWS.
     </h1>
     <div class="post-description">
-      Build &amp; deploy a web application using ECS with EC2 on AWS.
+      How to build &amp; deploy a high-availability web application using docker ECS with EC2 on AWS.
     </div>
-    <div class="post-meta">0 min&nbsp;·&nbsp;Me
+    <div class="post-meta">6 min&nbsp;·&nbsp;Me
 
 </div>
   </header> 
+  <div class="post-content"><h2 id="kiến-trúc-dự-án">Kiến trúc dự án<a hidden class="anchor" aria-hidden="true" href="#kiến-trúc-dự-án">#</a></h2>
+<p><img loading="lazy" src="/images/ecs/architecture.png" alt="images"  />
+</p>
+<ul>
+<li>Lâu lâu hands-on vài projects để nâng cao chuyên môn &amp; kỹ năng trong việc sử dụng AWS. Và đây là project mà mình đã làm.</li>
+<li>Topic: How to build &amp; deploy a high-availability web application using docker ECS with EC2 on AWS.</li>
+<li>Time to completed: 45 minutes</li>
+<li>Region: Singapore</li>
+<li>Cost: 1$</li>
+</ul>
+<h3 id="các-bước-chuẩn-bị">Các bước chuẩn bị:<a hidden class="anchor" aria-hidden="true" href="#các-bước-chuẩn-bị">#</a></h3>
+<ul>
+<li>1 chiếc Laptop or PC (không cần mạnh) có thể truy cập vào AWS console.</li>
+<li>IAM user full permission Administrator (không sử dụng User root khi làm lab).</li>
+<li>Registry domain tại Route 53 khoảng 3$ ( mục đích sử dụng để access dns route 53 thay vì sử dụng dns alb) (optional).
+<ul>
+<li>Tại đây mình đã registry domain: <a href="https://cloud-sangnguyen.click">https://cloud-sangnguyen.click</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="các-bước-thực-hiện">Các bước thực hiện:<a hidden class="anchor" aria-hidden="true" href="#các-bước-thực-hiện">#</a></h3>
+<p><strong>1.  VPC Setting (VPC, Route table, Public &amp; Private Subnet, IGW, NGW)</strong></p>
+<ul>
+<li>Click &ldquo;Create VPC&rdquo;
+<img loading="lazy" src="/images/ecs/vpc.png" alt="vpc"  />
+</li>
+<li><strong>Resources to create:</strong> VPC and more</li>
+<li><strong>Name:</strong> d-vpc-01</li>
+<li><strong>IPv4 CIDR block:</strong> 10.0.0.0/16
+<img loading="lazy" src="/images/ecs/vpc-01.png" alt="vpc"  />
+</li>
+<li><strong>Number of Public subnets:</strong> 2</li>
+<li><strong>Number of Private subnets:</strong> 2
+<ul>
+<li><strong>Public subnet CIDR block in ap-southeast-1a:</strong> 10.0.0.0/20</li>
+<li><strong>Public subnet CIDR block in ap-southeast-1b:</strong> 10.0.32.0/20</li>
+<li><strong>Private subnet CIDR block in ap-southeast-1a:</strong> 10.0.16.0/20</li>
+<li><strong>Private subnet CIDR block in ap-southeast-1b:</strong> 10.0.48.0/20
+<img loading="lazy" src="/images/ecs/vpc-02.png" alt="vpc"  />
+
+<img loading="lazy" src="/images/ecs/vpc-03.png" alt="vpc"  />
+</li>
+</ul>
+</li>
+<li><strong>Nat gateways:</strong> 1 per AZ</li>
+<li><strong>VPC endpoints:</strong> None
+<img loading="lazy" src="/images/ecs/vpc-04.png" alt="vpc"  />
+</li>
+<li>Preview lại một lần nuk =&gt; Click &ldquo;Create VPC&rdquo; (để hoàn tất việc triển khai)
+<img loading="lazy" src="/images/ecs/vpc-05.png" alt="vpc"  />
+</li>
+<li>Quá trình tạo VPC mất tầm 2 - 3 phút
+<img loading="lazy" src="/images/ecs/vpc-06.png" alt="vpc"  />
+</li>
+<li>Confirm VPC
+<img loading="lazy" src="/images/ecs/vpc-07.png" alt="vpc"  />
+</li>
+</ul>
+ <div class="notice warning">
+<p>Lưu ý: Việc triển khai 2 Nat gateways trên 2 AZ sẽ phát sinh thêm chi phí, cần cân nhắc khi làm việc này, hiện tại mình sử dụng credits trong qá trình làm lab.</p>
+</div>
+<ol start="2">
+<li><strong>Launch EC2 instance (vai trò Bastion-host)</strong></li>
+</ol>
+<ul>
+<li>Click &ldquo;Launch instances&rdquo;
+<img loading="lazy" src="/images/ecs/ec2.png" alt="ec2"  />
+</li>
+<li><strong>Name:</strong> d-ec2-bastion-host
+<img loading="lazy" src="/images/ecs/ec2-01.png" alt="ec2"  />
+</li>
+<li><strong>AMI:</strong> Amazon Linux 2023
+<img loading="lazy" src="/images/ecs/ec2-02.png" alt="ec2"  />
+</li>
+<li><strong>Instance type:</strong> t3.medium (mình sử dụng t3.medium để xào nấu docker cho nó mượt) (sẽ phát sinh thêm chi phí)
+<img loading="lazy" src="/images/ecs/ec2-03.png" alt="ec2"  />
+</li>
+<li><strong>Keypair:</strong> keypair.singapore.pem
+<img loading="lazy" src="/images/ecs/ec2-04.png" alt="ec2"  />
+</li>
+<li><strong>Network setting:</strong>
+<ul>
+<li><strong>VPC - required:</strong> d-vpc-01 (đã khởi tạo từ đầu)</li>
+<li><strong>Subnet:</strong> Public Subnet</li>
+<li><strong>Auto-assign public IP:</strong> Enable</li>
+<li><strong>Security groups:</strong> click create security group</li>
+<li><strong>Security group name:</strong> d-sg-bastion-host</li>
+<li><strong>Description:</strong> No open port 22 (Vì mình sẽ connect thông qua Session manager)</li>
+<li><strong>Inbound rule:</strong> none
+<img loading="lazy" src="/images/ecs/ec2-05.png" alt="ec2"  />
+</li>
+<li>Preview =&gt; click &ldquo;Launch instance&rdquo;
+<img loading="lazy" src="/images/ecs/ec2-06.png" alt="ec2"  />
+</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li><strong>Create Repository ECR</strong></li>
+</ol>
+<h4 id="click-create-a-repository">Click &ldquo;Create a repository&rdquo;<a hidden class="anchor" aria-hidden="true" href="#click-create-a-repository">#</a></h4>
+<ul>
+<li><strong>Repository name:</strong> d-ecr-web-application</li>
+<li><strong>Image tag mutability:</strong> Mutable
+<img loading="lazy" src="/images/ecs/ecr-01.png" alt="ecr"  />
+</li>
+<li><strong>Encryption settings:</strong> AES-256
+<img loading="lazy" src="/images/ecs/ecr-02.png" alt="ecr"  />
+</li>
+<li>Confirm repository
+<img loading="lazy" src="/images/ecs/ecr-03.png" alt="ecr"  />
+</li>
+</ul>
+<h4 id="tiếp-đến-quay-lại-bastion-host-để-xào-nấu-docker">Tiếp đến quay lại Bastion-host (để xào nấu docker)<a hidden class="anchor" aria-hidden="true" href="#tiếp-đến-quay-lại-bastion-host-để-xào-nấu-docker">#</a></h4>
+<ul>
+<li>Connect Bastion-host thông qua Session manager
+<img loading="lazy" src="/images/ecs/ec2-10.png" alt="ec2"  />
+
+<img loading="lazy" src="/images/ecs/ec2-11.png" alt="ec2"  />
+</li>
+<li>Command line:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span> <span style="color:#a6e22e">Yum</span> <span style="color:#a6e22e">update</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">y</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">Yum</span> <span style="color:#a6e22e">install</span> <span style="color:#a6e22e">git</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">y</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">Yum</span> <span style="color:#a6e22e">install</span> <span style="color:#a6e22e">docker</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">y</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">systemctl</span> <span style="color:#a6e22e">start</span> <span style="color:#a6e22e">docker</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">git</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">version</span>
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">docker</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">version</span></span></span></code></pre></div></li>
+<li>Check
+<img loading="lazy" src="/images/ecs/ec2-12.png" alt="ec2"  />
+
+<ul>
+<li>Git clone sources html từ github (vì mình không chuyên sâu về dev nên mình download sources free ở trên web)</li>
+<li>ls -la (list danh mục hiện tại)</li>
+<li>cd <strong>Host-a-Static-Web-App-on-AWS-with-Docker-and-AWS-ECS</strong>
+<img loading="lazy" src="/images/ecs/ec2-13.png" alt="ec2"  />
+</li>
+<li>ls -lart
+<img loading="lazy" src="/images/ecs/ec2-14.png" alt="ec2"  />
+</li>
+<li>vi Dockerfile
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">FROM</span> <span style="color:#a6e22e">nginx</span>:<span style="color:#ae81ff">1.25.3</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">COPY</span> .<span style="color:#f92672">/</span> <span style="color:#f92672">/</span><span style="color:#a6e22e">usr</span><span style="color:#f92672">/</span><span style="color:#a6e22e">share</span><span style="color:#f92672">/</span><span style="color:#a6e22e">nginx</span><span style="color:#f92672">/</span><span style="color:#a6e22e">html</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">EXPOSE</span> <span style="color:#ae81ff">80</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">CMD</span> [<span style="color:#e6db74">&#34;nginx&#34;</span>, <span style="color:#e6db74">&#34;-g&#34;</span>, <span style="color:#e6db74">&#34;daemon off;&#34;</span>]
+</span></span><span style="display:flex;"><span>  
+</span></span></code></pre></div></li>
+<li>docker build -t web-application .</li>
+<li>docker images (check images)</li>
+<li>docker run -d &ndash;name web-application -p 8080:80 web-application
+<img loading="lazy" src="/images/ecs/ec2-16.png" alt="ec2"  />
+</li>
+<li>docker ps -a (check status container)
+<img loading="lazy" src="/images/ecs/ec2-17.png" alt="ec2"  />
+</li>
+<li>Edit security group for Bastion-host
+<img loading="lazy" src="/images/ecs/ec2-18.png" alt="ec2"  />
+</li>
+<li>Inbound rules:
+<ul>
+<li><strong>Type:</strong> custom TCP</li>
+<li><strong>Port range:</strong> 8080</li>
+<li><strong>Source:</strong> Anywhere IPv4
+<img loading="lazy" src="/images/ecs/ec2-19.png" alt="ec2"  />
+
+<img loading="lazy" src="/images/ecs/ec2-20.png" alt="ec2"  />
+
+<img loading="lazy" src="/images/ecs/ec2-21.png" alt="ec2"  />
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Copy IP Public:8080 (truy cập vào trình duyệt)
+<img loading="lazy" src="/images/ecs/ec2-22.png" alt="ec2"  />
+
+<img loading="lazy" src="/images/ecs/ec2-23.png" alt="ec2"  />
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="modify-iam-role-for-ec2-permission-allows-ec2-access-to-ecr">Modify Iam Role for EC2 (permission allows EC2 access to ECR)<a hidden class="anchor" aria-hidden="true" href="#modify-iam-role-for-ec2-permission-allows-ec2-access-to-ecr">#</a></h4>
+<p><img loading="lazy" src="/images/ecs/modify-iam-role.png" alt="iam-role"  />
+
+<img loading="lazy" src="/images/ecs/modify-iam-role-1.png" alt="iam-role"  />
+</p>
+<h4 id="quay-lại-ec2-bastion-host-để-push-image-lên-ecr">Quay lại EC2 Bastion-host (để push image lên ECR)<a hidden class="anchor" aria-hidden="true" href="#quay-lại-ec2-bastion-host-để-push-image-lên-ecr">#</a></h4>
+<ul>
+<li>View push command trong ECR thực hiện thứ tự dòng lệnh
+<img loading="lazy" src="/images/ecs/ecr-04.png" alt="ecr"  />
+
+<img loading="lazy" src="/images/ecs/ecr-05.png" alt="ecr"  />
+
+<img loading="lazy" src="/images/ecs/ecr-06.png" alt="ecr"  />
+</li>
+<li>Check image bên trong ECR
+<img loading="lazy" src="/images/ecs/ecr-07.png" alt="ecr"  />
+</li>
+</ul>
+<ol start="4">
+<li><strong>Create cluster in ECS</strong></li>
+</ol>
+<ul>
+<li>Click create cluster
+<img loading="lazy" src="/images/ecs/ecs.png" alt="ecs"  />
+
+<ul>
+<li><strong>Cluster name:</strong> d-ecs-cluster-web-application
+<img loading="lazy" src="/images/ecs/ecs-01.png" alt="ecs"  />
+</li>
+</ul>
+</li>
+<li><strong>Infrastructure: Amazon EC2 instances</strong>
+<ul>
+<li><strong>Auto Scaling group (ASG):</strong> Create new ASG</li>
+<li><strong>Provisioning model:</strong> On-demand</li>
+<li><strong>Container instance Amazon Machine Image (AMI):</strong> Amazon Linux 2023</li>
+<li><strong>EC2 instance type:</strong> t3.medium</li>
+<li><strong>EC2 instance role:</strong> ecsInstanceRole</li>
+<li><strong>Desired capacity:</strong>
+<ul>
+<li><strong>Minimum:</strong> 4 (scale out theo kiến trúc)</li>
+<li><strong>Maximum:</strong> 4</li>
+</ul>
+</li>
+<li><strong>SSH Key pair:</strong> Keypair-singapore</li>
+<li><strong>Root EBS volume size:</strong> 30
+<img loading="lazy" src="/images/ecs/ecs-02.png" alt="ecs"  />
+</li>
+</ul>
+</li>
+<li><strong>Network settings for Amazon EC2 instances</strong>
+<ul>
+<li><strong>VPC:</strong> d-vpc-01</li>
+<li><strong>Subnets:</strong> Specify 2 private subnets
+<img loading="lazy" src="/images/ecs/ecs-03.png" alt="ecs"  />
+</li>
+<li><strong>Security group:</strong> Create a new security group
+<ul>
+<li><strong>Security group name:</strong> d-sg-ecs-web-application</li>
+<li><strong>Security group description:</strong> Allows traffic from ALB &amp; Bastion-host</li>
+</ul>
+</li>
+<li><strong>Inbound rules for security groups:</strong>
+<ul>
+<li><strong>Type:</strong> SSH</li>
+<li><strong>Protocol:</strong> TCP</li>
+<li><strong>Port range:</strong> 22</li>
+<li><strong>Source:</strong> Choose &ldquo;d-sg-bastion-host&rdquo;
+<img loading="lazy" src="/images/ecs/ecs-04.png" alt="ecs"  />
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Create
+<img loading="lazy" src="/images/ecs/ecs-05.png" alt="ecs"  />
+</li>
+</ul>
+<ul>
+<li>Lúc này nó sẽ tự động scale out 4 instances
+<img loading="lazy" src="/images/ecs/ecs-06.png" alt="ecs"  />
+</li>
+</ul>
+<h4 id="create-task-definition">Create Task definition<a hidden class="anchor" aria-hidden="true" href="#create-task-definition">#</a></h4>
+<ul>
+<li>Click &ldquo;Create task definition&rdquo;
+<img loading="lazy" src="/images/ecs/task.png" alt="task"  />
+</li>
+</ul>
+<h4 id="task-definition-configuration">Task definition configuration<a hidden class="anchor" aria-hidden="true" href="#task-definition-configuration">#</a></h4>
+<ul>
+<li><strong>Task definition family:</strong> d-task-definition-web-application
+<img loading="lazy" src="/images/ecs/task-01.png" alt="task"  />
+</li>
+</ul>
+<h4 id="infrastructure-requirements">Infrastructure requirements<a hidden class="anchor" aria-hidden="true" href="#infrastructure-requirements">#</a></h4>
+<ul>
+<li><strong>Launch type:</strong> Amazon EC2 instances</li>
+<li><strong>Operating system/Architecture:</strong> Linux/X86_64</li>
+<li><strong>Network mode:</strong> bridge</li>
+<li><strong>Task size</strong>
+<ul>
+<li><strong>CPU:</strong> 1vCPU</li>
+<li><strong>Memory:</strong> 3GB</li>
+</ul>
+</li>
+<li><strong>Task role:</strong> none (tùy bạn có muốn task bên trong container call API AWS services khác không, nếu không thì để trống)
+<img loading="lazy" src="/images/ecs/task-02.png" alt="task"  />
+</li>
+</ul>
+<h4 id="container---1">Container - 1<a hidden class="anchor" aria-hidden="true" href="#container---1">#</a></h4>
+<ul>
+<li><strong>Name:</strong> Container-web-application</li>
+<li><strong>Image URI:</strong> copy Image URI tại ECR</li>
+<li><strong>Essential container:</strong> Yes
+<img loading="lazy" src="/images/ecs/task-03.png" alt="task"  />
+
+<img loading="lazy" src="/images/ecs/task-04.png" alt="task"  />
+</li>
+<li>Create
+<img loading="lazy" src="/images/ecs/task-05.png" alt="task"  />
+</li>
+</ul>
+<ol start="5">
+<li><strong>Create Load Balancers</strong></li>
+</ol>
+<h4 id="create-target-group">Create target group<a hidden class="anchor" aria-hidden="true" href="#create-target-group">#</a></h4>
+<ul>
+<li>Create target group
+<img loading="lazy" src="/images/ecs/tg.png" alt="target group"  />
+</li>
+<li><strong>Choose a target type:</strong> Instances
+<img loading="lazy" src="/images/ecs/tg-01.png" alt="target group"  />
+</li>
+<li><strong>Target group name:</strong> d-tg-web-application</li>
+<li><strong>Protocol:</strong> HTTP</li>
+<li><strong>Port:</strong> 80</li>
+<li><strong>IP address type:</strong> IPv4</li>
+<li><strong>VPC:</strong> d-vpc-01</li>
+<li><strong>Protocol version:</strong> HTTP1
+<img loading="lazy" src="/images/ecs/tg-02.png" alt="target group"  />
+</li>
+<li>Next
+<img loading="lazy" src="/images/ecs/tg-03.png" alt="target group"  />
+</li>
+<li>Register targets (tại đây bạn không cần đăng ký EC2 instance vào trong target group, khi kết nối ALB nó sẽ tự động đăng ký vào target)
+<img loading="lazy" src="/images/ecs/tg-04.png" alt="target group"  />
+
+<img loading="lazy" src="/images/ecs/tg-05.png" alt="target group"  />
+</li>
+</ul>
+<h4 id="create-security-group-alb">Create Security group ALB<a hidden class="anchor" aria-hidden="true" href="#create-security-group-alb">#</a></h4>
+<p><img loading="lazy" src="/images/ecs/alb-04.png" alt="security group"  />
+</p>
+<ul>
+<li><strong>Security group name:</strong> d-sg-alb-web-application</li>
+<li><strong>Description:</strong> Allows traffic from Internet</li>
+<li><strong>VPC:</strong> d-vpc-01</li>
+<li><strong>Inbound rules:</strong>
+<ul>
+<li><strong>Type:</strong> HTTP</li>
+<li><strong>Protocol:</strong> TCP</li>
+<li><strong>Port range:</strong> 80</li>
+<li><strong>Sources:</strong> Anywhere IPv4</li>
+</ul>
+</li>
+<li>Create security group (hoàn tất việc tạo)
+<img loading="lazy" src="/images/ecs/alb-05.png" alt="security group"  />
+</li>
+</ul>
+<h4 id="create-load-balancer">Create Load balancer<a hidden class="anchor" aria-hidden="true" href="#create-load-balancer">#</a></h4>
+<ul>
+<li><strong>Load balancer types:</strong> Application Load Balancer =&gt; Create
+<img loading="lazy" src="/images/ecs/alb-01.png" alt="Alb"  />
+</li>
+<li><strong>Load balancer name:</strong> d-alb-web-application</li>
+<li><strong>Scheme:</strong> Internet-facing</li>
+<li><strong>Load balancer IP address type:</strong> IPv4
+<img loading="lazy" src="/images/ecs/alb-02.png" alt="Alb"  />
+</li>
+</ul>
+<h5 id="network-mapping">Network mapping<a hidden class="anchor" aria-hidden="true" href="#network-mapping">#</a></h5>
+<ul>
+<li><strong>VPC:</strong> d-vpc-01</li>
+<li><strong>Availability Zones:</strong> Specify 2 AZ có 2 Public Subnets
+<img loading="lazy" src="/images/ecs/alb-03.png" alt="Alb"  />
+</li>
+<li><strong>Security groups:</strong> d-sg-alb-web-application
+<img loading="lazy" src="/images/ecs/alb-06.png" alt="Alb"  />
+</li>
+</ul>
+<h5 id="listeners-and-routing">Listeners and routing<a hidden class="anchor" aria-hidden="true" href="#listeners-and-routing">#</a></h5>
+<ul>
+<li><strong>Protocol:</strong> HTTP</li>
+<li><strong>Port:</strong> 80</li>
+<li><strong>Forward to:</strong> d-tg-web-application
+<img loading="lazy" src="/images/ecs/alb-07.png" alt="Alb"  />
+</li>
+<li>Create load balancer (hoàn tất việc tạo)
+<img loading="lazy" src="/images/ecs/alb-08.png" alt="Alb"  />
+</li>
+</ul>
+<h5 id="edit-security-group-của-d-sg-ecs-web-application">Edit security group của d-sg-ecs-web-application<a hidden class="anchor" aria-hidden="true" href="#edit-security-group-của-d-sg-ecs-web-application">#</a></h5>
+<p><img loading="lazy" src="/images/ecs/edit-sg-ecs.png" alt="security group"  />
+</p>
+<ul>
+<li><strong>Inbound rules =&gt; Add rule</strong>
+<ul>
+<li><strong>Type:</strong> All TCP</li>
+<li><strong>Protocol:</strong> TCP</li>
+<li><strong>Port range:</strong> 0 - 65535</li>
+<li><strong>Sources:</strong> d-sg-alb-web-application (chọn security của ALB)
+<img loading="lazy" src="/images/ecs/edit-sg-ecs-1.png" alt="security group"  />
+</li>
+</ul>
+</li>
+</ul>
+<ol start="6">
+<li><strong>Create services in cluster</strong></li>
+</ol>
+<ul>
+<li>Create services
+<img loading="lazy" src="/images/ecs/ecs-10.png" alt="ecs"  />
+</li>
+</ul>
+<h4 id="environment">Environment<a hidden class="anchor" aria-hidden="true" href="#environment">#</a></h4>
+<h5 id="compute-configuration-advanced">Compute configuration (advanced)<a hidden class="anchor" aria-hidden="true" href="#compute-configuration-advanced">#</a></h5>
+<ul>
+<li><strong>Compute options:</strong> Launch type</li>
+<li><strong>Launch type:</strong> EC2
+<img loading="lazy" src="/images/ecs/ecs-11.png" alt="ecs"  />
+</li>
+</ul>
+<h5 id="deployment-configuration">Deployment configuration<a hidden class="anchor" aria-hidden="true" href="#deployment-configuration">#</a></h5>
+<ul>
+<li><strong>Application type:</strong> Click Service</li>
+<li><strong>Family:</strong> d-task-definition-web-application</li>
+<li><strong>Revision:</strong> 1 (LATEST)</li>
+<li><strong>Service name:</strong> d-ecs-service-web-application</li>
+<li><strong>Service type:</strong> Replica</li>
+<li><strong>Desired tasks:</strong> 4
+<img loading="lazy" src="/images/ecs/ecs-12.png" alt="ecs"  />
+</li>
+</ul>
+<h5 id="load-balancing-optional">Load balancing (optional)<a hidden class="anchor" aria-hidden="true" href="#load-balancing-optional">#</a></h5>
+<p><img loading="lazy" src="/images/ecs/ecs-13.png" alt="ecs"  />
+</p>
+<ul>
+<li><strong>Load balancer type:</strong> Application Load Balancer</li>
+<li><strong>Load balancer:</strong> d-alb-web-application</li>
+<li><strong>Listener:</strong> Use an existing listener</li>
+<li><strong>Listener:</strong> 80:HTTP
+<img loading="lazy" src="/images/ecs/ecs-14.png" alt="ecs"  />
+</li>
+<li><strong>Target group:</strong> Use an existing target group</li>
+<li><strong>Target group name:</strong> d-tg-web-application
+<img loading="lazy" src="/images/ecs/ecs-15.png" alt="ecs"  />
+</li>
+<li>Create (hoàn tất việc tạo service)
+<img loading="lazy" src="/images/ecs/ecs-16.png" alt="ecs"  />
+</li>
+<li>Quá trình task running mất tầm 1 - 2 phút
+<img loading="lazy" src="/images/ecs/ecs-17.png" alt="ecs"  />
+
+<img loading="lazy" src="/images/ecs/ecs-18.png" alt="ecs"  />
+</li>
+<li>Truy cập dns alb để kiểm tra
+<img loading="lazy" src="/images/ecs/access-complete.png" alt="ecs"  />
+</li>
+</ul>
+<ol start="7">
+<li><strong>Cấu hình SSL/TLS mã hóa đường truyền truy cập thông qua giao thức HTTPS</strong></li>
+</ol>
+<ul>
+<li>Tại giao diện ALB</li>
+<li>Add Listener
+<img loading="lazy" src="/images/ecs/https.png" alt="https"  />
+</li>
+</ul>
+<h4 id="listener-configuration">Listener configuration<a hidden class="anchor" aria-hidden="true" href="#listener-configuration">#</a></h4>
+<ul>
+<li><strong>Protocol:</strong> HTTPS</li>
+<li><strong>Port:</strong> 443</li>
+<li><strong>Forward to target group:</strong> d-tg-web-application
+<img loading="lazy" src="/images/ecs/https-01.png" alt="https"  />
+</li>
+</ul>
+<h4 id="secure-listener-settings">Secure listener settings:<a hidden class="anchor" aria-hidden="true" href="#secure-listener-settings">#</a></h4>
+<h5 id="default-ssltls-server-certificate">Default SSL/TLS server certificate<a hidden class="anchor" aria-hidden="true" href="#default-ssltls-server-certificate">#</a></h5>
+<ul>
+<li><strong>Certificate source:</strong> From ACM</li>
+<li><strong>Certificate (from ACM):</strong> cloud-sangnguyen.click
+<img loading="lazy" src="/images/ecs/https-02.png" alt="https"  />
+</li>
+<li><strong>Edit inbound rules:</strong> d-sg-alb-web-application (open port 443)
+<img loading="lazy" src="/images/ecs/https-03.png" alt="https"  />
+</li>
+<li><strong>Add inbound rule:</strong>
+<ul>
+<li><strong>Type:</strong> HTTPS</li>
+<li><strong>Protocol:</strong> TCP</li>
+<li><strong>Port range:</strong> 443</li>
+<li><strong>Source:</strong> Anywhere IPv4</li>
+</ul>
+</li>
+<li>Save rules
+<img loading="lazy" src="/images/ecs/https-04.png" alt="https"  />
+</li>
+</ul>
+<h3 id="sử-dụng-dns-đã-đăng-ký-tại-route-53-thay-thế-cho-dns-alb-optional">Sử dụng DNS đã đăng ký tại route 53 thay thế cho DNS ALB (optional)<a hidden class="anchor" aria-hidden="true" href="#sử-dụng-dns-đã-đăng-ký-tại-route-53-thay-thế-cho-dns-alb-optional">#</a></h3>
+<ul>
+<li>Route 53 trên console</li>
+<li>Create record
+<img loading="lazy" src="/images/ecs/https-05.png" alt="https"  />
+</li>
+<li><strong>Routing policy:</strong> Simple routing
+<img loading="lazy" src="/images/ecs/https-06.png" alt="https"  />
+</li>
+<li><strong>Configure records:</strong> define simple record
+<img loading="lazy" src="/images/ecs/https-7.png" alt="https"  />
+</li>
+</ul>
+<h4 id="valueroute-traffic-to">Value/Route traffic to<a hidden class="anchor" aria-hidden="true" href="#valueroute-traffic-to">#</a></h4>
+<ul>
+<li>Alias to Application and Classic Load Balancer</li>
+<li>Asia Pacific (Singapore)</li>
+<li>Click &ldquo;Define simple record&rdquo;
+<img loading="lazy" src="/images/ecs/https-08.png" alt="https"  />
+</li>
+<li>Create records (để hoàn tất việc tạo)
+<img loading="lazy" src="/images/ecs/https-09.png" alt="https"  />
+</li>
+<li>Confirm record
+<img loading="lazy" src="/images/ecs/https-10.png" alt="https"  />
+</li>
+<li>Truy cập <a href="https://cloud-sangnguyen.click">https://cloud-sangnguyen.click</a> (test hoạt động)
+<img loading="lazy" src="/images/ecs/https-complete.png" alt="https"  />
+</li>
+</ul>
+<h3 id="clean-up-resources">Clean up resources<a hidden class="anchor" aria-hidden="true" href="#clean-up-resources">#</a></h3>
+<ol>
+<li>Delete Services in cluster</li>
+<li>Delete Cluster in ECS</li>
+<li>Delete Task-definition</li>
+<li>Delete Application Load Balancer</li>
+<li>Delete Target group</li>
+<li>Terminate EC2-Bastion-host</li>
+<li>Delete Nat gateways</li>
+<li>Release elastic IP address</li>
+<li>Delete VPC</li>
+</ol>
+<div class="notice error">
+<p>Kiểm tra kỹ lại all resources một lần nuk, để tránh mất tiền :)</p>
+</div>
+<ul>
+<li>Ok, vừa rồi là một project khá dài cũng khá nhiều công đoạn trong việc triển khai một ứng dụng high-availability sử dụng docker ECS with EC2.</li>
+<li>Chúc các bạn thành công.</li>
+</ul>
+
+
+  </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
